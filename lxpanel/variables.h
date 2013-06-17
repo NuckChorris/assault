@@ -35,3 +35,9 @@
 #define COLOR_CHARGING COLOR_DEFAULT
 //#define COLOR_CHARGING 65/255.0, 127/255.0, 84/255.0
 #define COLOR_BACKGROUND 196/255.0, 202/255.0, 202/255.0
+// Set this to 0.0 to have a transparent background
+#define OPACITY_BACKGROUND 1.0
+// Uncomment to make the background fill the entire widget.
+// By default, the background will only fill the background
+// of the battery bar itself.
+#define BACKGROUND_FILL_ENTIRE_WIDGET
