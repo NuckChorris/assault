@@ -17,6 +17,7 @@ gboolean toggle_real_callback
 (UNUSED GtkWidget *widget, UNUSED gpointer data)
 {
 	gtk_widget_set_sensitive(GTK_WIDGET(spn_percent), !battery_real());
+	gtk_widget_set_sensitive(GTK_WIDGET(chk_charging), !battery_real());
 	gtk_widget_queue_draw(drawing_area);
 	return FALSE;
 }
