@@ -20,6 +20,7 @@ of the peg on the side.
 ## Does it work with my WM?
 Maybe.  Assault currently has support for the following Window Managers, Docks,
 and Bars:
+ * WindowMaker DockApp
  * AwesomeWM (coming soon)
 
 *Is your WM not listed here?  File a
