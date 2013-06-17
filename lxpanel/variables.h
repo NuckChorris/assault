@@ -15,8 +15,8 @@
 #define PEG_WIDTH 2
 
 // Bolt size
-#define BOLT_WIDTH 40
-#define BOLT_HEIGHT 22
+#define BOLT_WIDTH 24
+#define BOLT_HEIGHT 12
 
 // Font settings
 //#define FONT_FACE "M+ 1p Light"
