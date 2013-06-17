@@ -15,12 +15,9 @@ gboolean battery_get_charging_from_sys
 		if (fgets(b, 9, fp)) {
 			fclose(fp);
 
-			printf("[battery_get_charging_from_sys] status: %s\n", b);
 			if (strcmp(b, "Charging") == 0) {
-				printf("[battery_get_charging_from_sys] returning TRUE\n");
 				return TRUE;
 			} else {
-				printf("[battery_get_charging_from_sys] returning FALSE\n");
 				return FALSE;
 			}
 		}
@@ -49,8 +46,6 @@ gdouble battery_get_percent_from_sys
 			fclose(fp_full);
 			fclose(fp_now);
 
-			printf("[battery_get_percent_from_sys] charge_{full,now} level: %d / %d\n", now, full);
-			printf("[battery_get_percent_from_sys] percentage: %f\n", (((double)now / (double)full) * 100.0));
 			return ((double)now / (double)full);
 		}
 	}
@@ -66,14 +61,11 @@ gdouble battery_get_percent_from_sys
 			fclose(fp_full);
 			fclose(fp_now);
 
-			printf("[battery_get_percent_from_sys] energy_{full,now} level: %d / %d\n", now, full);
-			printf("[battery_get_percent_from_sys] percentage: %f\n", (((double)now / (double)full) * 100.0));
 			return ((double)now / (double)full);
 		}
 	}
 	
 	// If we're here, we don't have anything, so return 0
-	printf("[battery_get_percent_from_sys] unknown battery level\n");
 	return 0.0;
 }
 
