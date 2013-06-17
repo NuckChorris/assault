@@ -3,11 +3,14 @@ A simple customizable battery indicator ported to as many WMs, docks, and
 platforms as possible.
 
 ## Is it pretty?
-Very! I'm quite proud of the setup I've made.
+I'd say so, though I'm a tad biased.
 
 <p align="center">
 	<img src="http://nuckchorris.github.io/assault/demo.png" />
 </p>
+
+*font shown is the wonderful [M+ 1p](http://mplus-fonts.sourceforge.jp/) by 
+Coji Morishita.*
 
 ## Customizable
 Almost everything is configurable.  You can change the size of the battery, the
@@ -20,10 +23,10 @@ and Bars:
  * AwesomeWM (coming soon)
 
 *Is your WM not listed here?  File a
-[feature request](https://github.com/NuckChorris/assault/issues/new) or write it
-yourself and send a Pull Request*
+[feature request](https://github.com/NuckChorris/assault/issues/new) or fork it
+and send a [pull request](https://github.com/NuckChorris/assault/pulls)*
 
 ## Installation
 1. Read the manual for your Window Manager, Dock, or Bar.
 2. Don't pester me.
-3. Maybe I'll eventually add INSTALL.md files to each folder.
+3. Maybe I'll eventually add `INSTALL.md` files to each folder.
