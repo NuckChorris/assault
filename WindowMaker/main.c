@@ -133,7 +133,7 @@ static void activate
 	hints.min_height = 64;
 	hints.min_height = 64;
 	gtk_window_set_geometry_hints(GTK_WINDOW(window), NULL, &hints, (GDK_HINT_MIN_SIZE | GDK_HINT_MAX_SIZE));
-    gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
+	gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
 
 	// And display it.
 	gtk_widget_show_all(window);
