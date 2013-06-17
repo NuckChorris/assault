@@ -132,10 +132,10 @@ static int lxpanel_constructor
 	return TRUE;
 }
 
-static int lxpanel_destructor
+static void lxpanel_destructor
 (Plugin *p)
 {
-	return TRUE;
+	// Don't need to do anything here. Ehehe.
 }
 
 PluginClass assault_plugin_class = {
