@@ -1,5 +1,4 @@
 #include "draw_battery.h"
-#include "variables.h"
 #include "utils.h"
 
 cairo_path_t *battery_bolt_generate
