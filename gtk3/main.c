@@ -6,6 +6,13 @@
 
 GtkWidget *window, *grid, *drawing_area, *spn_percent, *chk_charging, *chk_real_battery;
 
+gboolean do_redraw
+(UNUSED gpointer user_data)
+{
+	gtk_widget_queue_draw(drawing_area);
+	return TRUE;
+}
+
 gboolean toggle_callback
 (UNUSED GtkWidget *widget, UNUSED gpointer data)
 {
@@ -161,6 +168,8 @@ static void activate
 	gtk_grid_attach(GTK_GRID(grid), drawing_area, 0, 0, 1, 1);
 	gtk_widget_set_size_request(drawing_area, BATTERY_WIDTH + MARGIN, BATTERY_HEIGHT + MARGIN);
 	g_signal_connect(G_OBJECT(drawing_area), "draw", G_CALLBACK(draw_callback), NULL);
+	// Add a timer for redraw
+	g_timeout_add_seconds(UPDATE_SECONDS, (GSourceFunc)do_redraw, NULL);
 	
 	// Percentage spinner
 	stepper_adjustment = gtk_adjustment_new(50, 0, 100, 1, 0, 0);

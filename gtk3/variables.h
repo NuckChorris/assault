@@ -1,5 +1,8 @@
 #pragma once
 
+// Time between updates (in seconds)
+#define UPDATE_SECONDS 5
+
 // Critical battery level
 #define CRITICAL_LEVEL .15
 
