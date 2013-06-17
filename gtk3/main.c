@@ -4,13 +4,7 @@
 #include "utils.h"
 #include "battery_level_sys.h"
 
-GtkWidget *window,
-          *grid,
-          *drawing_area,
-          *spn_percent,
-          *chk_critical,
-          *chk_charging,
-          *chk_real_battery;
+GtkWidget *window, *grid, *drawing_area, *spn_percent, *chk_charging, *chk_real_battery;
 
 gboolean toggle_callback
 (UNUSED GtkWidget *widget, UNUSED gpointer data)
@@ -35,7 +29,7 @@ gboolean battery_real
 gboolean battery_get_critical
 ()
 {
-    return (battery_get_percent() < CRITICAL_LEVEL);
+	return (battery_get_percent() < CRITICAL_LEVEL);
 }
 
 gboolean battery_get_charging
