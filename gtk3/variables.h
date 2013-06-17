@@ -1,5 +1,8 @@
 #pragma once
 
+// Critical battery level
+#define CRITICAL_LEVEL .15
+
 // Battery size
 #define BATTERY_HEIGHT 15
 #define BATTERY_WIDTH 36

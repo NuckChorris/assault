@@ -2,8 +2,9 @@
 #include "variables.h"
 #include "draw_battery.h"
 #include "utils.h"
+#include "battery_level_sys.h"
 
-GtkWidget *window, *grid, *drawing_area, *spn_percent, *chk_critical, *chk_charging;
+GtkWidget *window, *grid, *drawing_area, *spn_percent, *chk_charging, *chk_real_battery;
 
 gboolean toggle_callback
 (UNUSED GtkWidget *widget, UNUSED gpointer data)
@@ -19,22 +20,36 @@ gboolean update_spinner
 	return FALSE;
 }
 
+gboolean battery_real
+()
+{
+	return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(chk_real_battery));
+}
+
 gboolean battery_get_critical
 ()
 {
-	return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(chk_critical));
+	return (battery_get_percent() < CRITICAL_LEVEL);
 }
 
 gboolean battery_get_charging
 ()
 {
-	return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(chk_charging));
+	if (battery_real()) {
+		return battery_get_charging_from_sys();
+	} else {
+		return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(chk_charging));
+	}
 }
 
 gdouble battery_get_percent
 ()
 {
-	return gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spn_percent)) / 100.0;
+	if (battery_real()) {
+		return battery_get_percent_from_sys();
+    } else {
+		return gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spn_percent)) / 100.0;
+	}
 }
 
 gboolean draw_callback
@@ -124,6 +139,7 @@ static void activate
 	// Window
 	window = gtk_application_window_new(app);
 	gtk_window_set_title(GTK_WINDOW(window), "Battery Indicator");
+	gtk_window_set_modal(GTK_WINDOW(window), TRUE);
 	gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
 
 	// Grid Container
@@ -143,10 +159,10 @@ static void activate
 	gtk_grid_attach(GTK_GRID(grid), spn_percent, 0, 1, 1, 1);
 	g_signal_connect(G_OBJECT(spn_percent), "value-changed", G_CALLBACK(update_spinner), NULL);
 
-	// Critical checkbox
-	chk_critical = gtk_check_button_new_with_label("Critical");
-	gtk_grid_attach(GTK_GRID(grid), chk_critical, 0, 2, 1, 1);
-	g_signal_connect(G_OBJECT(chk_critical), "toggled", G_CALLBACK(toggle_callback), NULL);
+	// Real battery level checkbox
+	chk_real_battery = gtk_check_button_new_with_label("Real level");
+	gtk_grid_attach(GTK_GRID(grid), chk_real_battery, 0, 2, 1, 1);
+	g_signal_connect(G_OBJECT(chk_real_battery), "toggled", G_CALLBACK(toggle_callback), NULL);
 
 	// Charging checkbox
 	chk_charging = gtk_check_button_new_with_label("Charging");
@@ -169,3 +185,5 @@ int main
 	g_object_unref (app);
 	return status;
 }
+
+// vim: set noexpandtab
