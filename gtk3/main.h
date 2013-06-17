@@ -1,5 +1,5 @@
 #include <gtk/gtk.h>
-GtkWidget *window, *grid, *drawing_area, *spn_percent, *chk_critical, *chk_charging;
+GtkWidget *window, *grid, *drawing_area, *spn_percent, *chk_charging, *chk_real_battery;
 
 gboolean toggle_callback (GtkWidget *widget, gpointer data);
 gboolean update_spinner (GtkWidget *widget, gpointer data);
