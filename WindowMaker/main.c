@@ -4,42 +4,13 @@
 #include "utils.h"
 #include "battery_level_sys.h"
 
-GtkWidget *window, *grid, *drawing_area, *spn_percent, *chk_charging, *chk_real_battery;
+GtkWidget *window, *grid, *drawing_area;
 
 gboolean do_redraw
 (UNUSED gpointer user_data)
 {
 	gtk_widget_queue_draw(drawing_area);
 	return TRUE;
-}
-
-gboolean toggle_callback
-(UNUSED GtkWidget *widget, UNUSED gpointer data)
-{
-	gtk_widget_queue_draw(drawing_area);
-	return FALSE;
-}
-
-gboolean toggle_real_callback
-(UNUSED GtkWidget *widget, UNUSED gpointer data)
-{
-	gtk_widget_set_sensitive(GTK_WIDGET(spn_percent), !battery_real());
-	gtk_widget_set_sensitive(GTK_WIDGET(chk_charging), !battery_real());
-	gtk_widget_queue_draw(drawing_area);
-	return FALSE;
-}
-
-gboolean update_spinner
-(UNUSED GtkWidget *widget, UNUSED gpointer data)
-{
-	gtk_widget_queue_draw(drawing_area);
-	return FALSE;
-}
-
-gboolean battery_real
-()
-{
-	return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(chk_real_battery));
 }
 
 gboolean battery_get_critical
@@ -51,21 +22,13 @@ gboolean battery_get_critical
 gboolean battery_get_charging
 ()
 {
-	if (battery_real()) {
-		return battery_get_charging_from_sys();
-	} else {
-		return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(chk_charging));
-	}
+	return battery_get_charging_from_sys();
 }
 
 gdouble battery_get_percent
 ()
 {
-	if (battery_real()) {
-		return battery_get_percent_from_sys();
-    } else {
-		return gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spn_percent)) / 100.0;
-	}
+	return battery_get_percent_from_sys();
 }
 
 gboolean draw_callback
@@ -150,44 +113,29 @@ gboolean draw_callback
 static void activate
 (GtkApplication *app, UNUSED gpointer user_data)
 {
-	GtkAdjustment *stepper_adjustment;
 
 	// Window
 	window = gtk_application_window_new(app);
 	gtk_window_set_title(GTK_WINDOW(window), "Battery Indicator");
-	gtk_window_set_modal(GTK_WINDOW(window), TRUE);
-	gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
 
-	// Grid Container
-	grid = gtk_grid_new();
-	gtk_container_add(GTK_CONTAINER(window), grid);
-
-	// Battery Indicator
 	// Set up Drawing Area
 	drawing_area = gtk_drawing_area_new();
-	gtk_grid_attach(GTK_GRID(grid), drawing_area, 0, 0, 1, 1);
-	gtk_widget_set_size_request(drawing_area, BATTERY_WIDTH + MARGIN, BATTERY_HEIGHT + MARGIN);
+	gtk_widget_set_size_request(drawing_area, 64, 64);
 	g_signal_connect(G_OBJECT(drawing_area), "draw", G_CALLBACK(draw_callback), NULL);
 	// Add a timer for redraw
-	g_timeout_add_seconds(UPDATE_SECONDS, (GSourceFunc)do_redraw, NULL);
-	
-	// Percentage spinner
-	stepper_adjustment = gtk_adjustment_new(50, 0, 100, 1, 0, 0);
-	spn_percent = gtk_spin_button_new(stepper_adjustment, 1.0, 0);
-	gtk_grid_attach(GTK_GRID(grid), spn_percent, 0, 1, 1, 1);
-	g_signal_connect(G_OBJECT(spn_percent), "value-changed", G_CALLBACK(update_spinner), NULL);
+	g_timeout_add_seconds(UPDATE_SECONDS, &do_redraw, NULL);
+	gtk_container_add(GTK_CONTAINER(window), drawing_area);
 
-	// Real battery level checkbox
-	chk_real_battery = gtk_check_button_new_with_label("Real level");
-	gtk_grid_attach(GTK_GRID(grid), chk_real_battery, 0, 2, 1, 1);
-	g_signal_connect(G_OBJECT(chk_real_battery), "toggled", G_CALLBACK(toggle_real_callback), NULL);
+	// Set size
+	GdkGeometry hints; 
+	hints.min_width = 64;
+	hints.max_width = 64;
+	hints.min_height = 64;
+	hints.min_height = 64;
+	gtk_window_set_geometry_hints(GTK_WINDOW(window), NULL, &hints, (GDK_HINT_MIN_SIZE | GDK_HINT_MAX_SIZE));
+	gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
 
-	// Charging checkbox
-	chk_charging = gtk_check_button_new_with_label("Charging");
-	gtk_grid_attach(GTK_GRID(grid), chk_charging, 0, 3, 1, 1);
-	g_signal_connect(G_OBJECT(chk_charging), "toggled", G_CALLBACK(toggle_callback), NULL);
-	
-	// Display it
+	// And display it.
 	gtk_widget_show_all(window);
 }
 
@@ -197,7 +145,7 @@ int main
 	GtkApplication *app;
 	int status;
 
-	app = gtk_application_new("org.assault.gtk3", G_APPLICATION_FLAGS_NONE);
+	app = gtk_application_new("org.assault.DockApp", G_APPLICATION_FLAGS_NONE);
 	g_signal_connect(app, "activate", G_CALLBACK(activate), NULL);
 	status = g_application_run(G_APPLICATION(app), argc, argv);
 	g_object_unref (app);
