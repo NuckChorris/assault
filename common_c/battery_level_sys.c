@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include "main.h"
-#include "utils.h"
+#include <string.h>
 #include "battery_level_sys.h"
 
 gboolean battery_get_charging_from_sys

@@ -1,4 +1,4 @@
-program_NAME := BatteryIndicator
+program_NAME := BatteryIndicator.app
 program_INCLUDE_DIRS := ../common_c
 program_SRCS := $(wildcard *.c)
 program_SRCS += $(foreach includedir,$(program_INCLUDE_DIRS),$(wildcard $(includedir)/*.c))
