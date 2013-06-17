@@ -48,8 +48,12 @@ gboolean draw_callback
 	cairo_set_antialias(cr, CAIRO_ANTIALIAS_BEST);
 
 	// Clear canvas
+	#ifdef BACKGROUND_FILL_ENTIRE_WIDGET
 	cairo_rectangle(cr, 0, 0, width, height);
-	cairo_set_source_rgba(cr, COLOR_BACKGROUND, 1.0);
+	#else
+	cairo_rectangle(cr, (MARGIN / 2) + STROKE_WIDTH, (MARGIN / 2) + STROKE_WIDTH, BATTERY_WIDTH, BATTERY_HEIGHT);
+	#endif
+	cairo_set_source_rgba(cr, COLOR_BACKGROUND, OPACITY_BACKGROUND);
 	cairo_fill(cr);
 
 	// Decide on a color
