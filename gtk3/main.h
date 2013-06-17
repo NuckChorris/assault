@@ -3,6 +3,7 @@ GtkWidget *window, *grid, *drawing_area, *spn_percent, *chk_critical, *chk_charg
 
 gboolean toggle_callback (GtkWidget *widget, gpointer data);
 gboolean update_spinner (GtkWidget *widget, gpointer data);
+gboolean battery_real ();
 gboolean battery_get_critical ();
 gboolean battery_get_charging ();
 gdouble battery_get_percent ();

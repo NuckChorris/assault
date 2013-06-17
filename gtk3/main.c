@@ -13,6 +13,14 @@ gboolean toggle_callback
 	return FALSE;
 }
 
+gboolean toggle_real_callback
+(UNUSED GtkWidget *widget, UNUSED gpointer data)
+{
+	gtk_widget_set_sensitive(GTK_WIDGET(spn_percent), !battery_real());
+	gtk_widget_queue_draw(drawing_area);
+	return FALSE;
+}
+
 gboolean update_spinner
 (UNUSED GtkWidget *widget, UNUSED gpointer data)
 {
@@ -162,7 +170,7 @@ static void activate
 	// Real battery level checkbox
 	chk_real_battery = gtk_check_button_new_with_label("Real level");
 	gtk_grid_attach(GTK_GRID(grid), chk_real_battery, 0, 2, 1, 1);
-	g_signal_connect(G_OBJECT(chk_real_battery), "toggled", G_CALLBACK(toggle_callback), NULL);
+	g_signal_connect(G_OBJECT(chk_real_battery), "toggled", G_CALLBACK(toggle_real_callback), NULL);
 
 	// Charging checkbox
 	chk_charging = gtk_check_button_new_with_label("Charging");
