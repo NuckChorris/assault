@@ -16,7 +16,7 @@ gboolean do_redraw
 gboolean battery_get_critical
 ()
 {
-	return (battery_get_percent() < CRITICAL_LEVEL);
+	return (battery_get_percent() <= CRITICAL_LEVEL);
 }
 
 gboolean battery_get_charging
