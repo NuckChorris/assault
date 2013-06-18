@@ -32,3 +32,7 @@ and send a [pull request](https://github.com/NuckChorris/assault/pulls)*
 1. Read the manual for your Window Manager, Dock, or Bar.
 2. Don't pester me.
 3. Maybe I'll eventually add `INSTALL.md` files to each folder.
+
+## License
+All work is released under the [MIT License](./LICENSE) where applicable, or
+otherwise released into the public domain where local laws permit such.
