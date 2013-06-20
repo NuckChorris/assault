@@ -15,3 +15,6 @@
 *.exe
 *.out
 *.app
+
+# YCM conpiled config
+.ycm_extra_conf.pyc
