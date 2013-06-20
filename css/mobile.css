@@ -1,0 +1,4 @@
+section.split > div.half {
+	width: 100%;
+	float: none;
+}

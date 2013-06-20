@@ -1,0 +1,84 @@
+@font-face {
+	font-family: 'M+ 1p Light';
+	src: url('http://mplus-fonts.sourceforge.jp/webfonts/mplus-1p-light.ttf') format("truetype");
+}
+@font-face {
+	font-family 'M+ 1p Regular';
+	src: url('http://mplus-fonts.sourceforge.jp/webfonts/mplus-1p-regular.ttf') format("truetype");
+}
+@font-face {
+	font-family: 'M+ 1p Bold';
+	src: url('http://mplus-fonts.sourceforge.jp/webfonts/mplus-1p-bold.ttf') format("truetype");
+}
+
+body {
+	font-family: 'M+ 1p Light', 'Helvetica', 'Calibri', sans-serif;
+	background-color: rgb(196, 202, 202);
+	margin: 1.5em auto;
+	width: 80%;
+	max-width: 45em;
+}
+
+b, strong, dt {
+	font-family: 'M+ 1p Regular', 'Helvetica', 'Calibri', sans-serif;
+	font-weight: normal;
+}
+
+a {
+	color: rgb(64, 84, 127);
+}
+
+img {
+	max-width: 90%;
+	margin: 1em;
+}
+/* Header */
+header {
+	text-align: center;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'M+ 1p Bold', 'Helvetica', 'Calibri', sans-serif;
+	color: rgb(64, 84, 127);
+	font-weight: normal;
+}
+h1 {
+	font-size: 2.0em;
+}
+h2 {
+	border-bottom: 2px solid rgb(64, 84, 127);
+	font-size: 1.4em;
+}
+.logo {
+	max-width: 95%;
+	width: 20em;
+}
+
+/* Sections */
+section {
+	overflow: hidden;
+}
+section.split > div.half {
+	width: 50%;
+	float: left;
+}
+section.split:nth-child(even) > div.half:nth-child(1) {
+	float: right;
+}
+section.split:nth-child(even) > div.half:nth-child(2) {
+	float: left;
+}
+p.patches-welcome {
+	font-style: italic;
+	font-size: 0.8em;
+	width: 100%;
+	clear: both;
+}
+
+/* Options List */
+dd {
+	margin-bottom: 0.5em;
+}
+img.options {
+	width: 95%;
+	max-width: 95%;
+}

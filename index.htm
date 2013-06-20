@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" media="(max-width: 480px)" href="css/mobile.css" />
+		<title>Assault &mdash; A Better Battery Indicator</title>
+	</head>
+	<body>
+		<header>
+			<img src="img/logo2.svg" alt="[ ⚡ ]" class="logo" />
+			<h1>Assault</h1>
+		</header>
+		<section class="what-is-it">
+			<h2>What is Assault?</h2>
+			<p>Assault is a highly customizable handcrafted battery indicator with
+			support for a wide range of window managers, docks, and trays.</p>
+		</section>
+		<section class="supported-interfaces split">
+			<h2>Will it work for me?</h2>
+			<div class="half">
+				<p>Our goal is to support as many WMs, docks, trays, and bars as
+				possible. Is yours not listed? File a 
+				<a href="https://github.com/NuckChorris/assault/issues/new">feature request</a>
+				or fork it and send a
+				<a href="http://github.com/NuckChorris/assault/pulls">pull request</a>.
+				</p>
+			</div>
+			<div class="half">
+				<ul>
+					<li><strong>WindowMaker</strong> DockApp</li>
+					<li><strong>lxpanel</strong></li>
+					<li><strong>AwesomeWM</strong> via Awful <i>(coming soon)</i></li>
+				</ul>
+			</div>
+		</section>
+		<section class="customizing">
+			<h2>Customization</h2>
+			<div class="half">
+				<p>Almost everything is configurable.  You can change the size of the 
+				battery, the size of the lightning bolt, the size of the text, the 
+				colors, even down to the size of the peg on the side.</p>
+				<p>Every interface has its own way of exposing configuration options, 
+				but the options it exposes are the same, excluding the generic
+				StatusIcon interface, which determines dimensions automatically.</p>
+			</div>
+		</section>
+
+		<!-- Battery -->
+		<section class="options-battery split">
+			<div class="half">
+				<img src="img/options_battery.svg" class="options" alt="The height 
+				and width of the battery are excluding the borders; that is to say,
+				it describes the inside of the battery, not the outside." />
+			</div>
+			<div class="half">
+				<dl>
+					<dt>Battery Height</dt>
+					<dd>The height of the inside of the battery</dd>
+					<dt>Battery width</dt>
+					<dd>The width of the inside of the battery</dd>
+				</dl>
+			</div>
+		</section>
+
+		<!-- Bolt -->
+		<section class="options-bolt split">
+			<div class="half">
+				<img src="img/options_bolt.svg" class="options" alt="The bolt is the 
+				indicator for when the battery is charging or the AC adapter is 
+				plugged in." />
+			</div>
+			<div class="half">
+				<dl>
+					<dt>Bolt Width</dt>
+					<dd>The width of the charging "bolt" indicator</dd>
+					<dt>Bolt Height</dt>
+					<dd>The height of the charging "bolt" indicator</dd>
+				</dl>
+			</div>
+		</section>
+
+		<!-- Peg -->
+		<section class="options-peg split">
+			<div class="half">
+				<img src="img/options_peg.svg" class="options" alt="The peg is the
+				protrusion on the right end of the battery indicator." />
+			</div>
+			<div class="half">
+				<dl>
+					<dt>Peg Height</dt>
+					<dd>The height of that peg on the side of the battery</dd>
+					<dt>Peg Width</dt>
+					<dd>The width of that peg on the side of the battery</dd>
+				</dl>
+			</div>
+		</section>
+
+		<!-- Stroke -->
+		<section class="options-bolt split">
+			<div class="half">
+				<img src="img/options_stroke.svg" class="options" alt="The stroke is 
+				in addition to the size of the actual battery itself, lying outside 
+				the region described by the Battery Height/Width." />
+			</div>
+			<div class="half">
+				<dl>
+					<dt>Stroke Width</dt>
+					<dd>The thickness of the battery's outline</dd>
+				</dl>
+			</div>
+		</section>
+
+		<!-- Font -->
+		<section class="options-font split">
+			<div class="half">
+				<img src="img/options_font.svg" class="options" alt="The font face 
+				and size describe the name and size of the font you wish to use for 
+				the percentage indicator.  The size represents the height of the
+				text in some unknown units.  Ask Cairo." />
+			</div>
+			<div class="half">
+				<dl>
+					<dt>Font Face</dt>
+					<dd>The font face of the indicator text</dd>
+					<dt>Font Size</dt>
+					<dd>The font size of the indicator text</dd>
+				</dl>
+			</div>
+		</section>
+
+		<!-- General -->
+		<section class="options-general split">
+			<div class="half">
+				<img src="options_general.svg" class="options" alt="" />
+			</div>
+			<div class="half">
+				<dl>
+					<dt>Update Interval</dt>
+					<dd>How often the indicator will update</dd>
+					<dt>Critical Level</dt>
+					<dd>The level at which the battery is considered "critical"</dd>
+				</dl>
+			</div>
+		</section>
+
+		<!-- Colors -->
+		<section class="options-colors split">
+			<div class="half">
+				<img src="img/options_colors.svg" class="options" alt="The colors
+				you select affect all foreground elements — that is, they affect the 
+				stroke, the fill, and the text.  The default colors are blue for 
+				discharging (and charging) and red for critical.  The default 
+				background color is a bluish offwhite; specifically, the background
+				of this page." />
+			</div>
+			<div class="half">
+				<dl>
+					<dt>Discharging Color</dt>
+					<dd>The color of the indicator when discharging, in RGBA</dd>
+					<dt>Critical Color</dt>
+					<dd>The color of the indicator when below the critical level, in RGBA</dd>
+					<dt>Charging Color<dt>
+					<dd>The color of the indicator when charging or on AC power, in RGBA</dd>
+					<dt>Background Color</dt>
+					<dd>The color behind the indicator or widget, in RGBA</dd>
+				</dl>
+			</div>
+		</section>
+	</body>
+</html>
