@@ -1,4 +1,4 @@
-# ![logo](http://nuckchorris.github.io/assault/logo.png) assault
+# ![logo](http://nuckchorris.github.io/assault/img/logo.png) assault
 A simple customizable battery indicator ported to as many WMs, docks, and
 platforms as possible.
 
@@ -6,7 +6,7 @@ platforms as possible.
 I'd say so, though I'm a tad biased.
 
 <p align="center">
-	<img src="http://nuckchorris.github.io/assault/demo.png" />
+	<img src="http://nuckchorris.github.io/assault/img/demo.png" />
 </p>
 
 *font shown is the wonderful [M+ 1p](http://mplus-fonts.sourceforge.jp/) by 
