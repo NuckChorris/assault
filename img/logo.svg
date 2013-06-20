@@ -1,67 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   width="42"
-   height="19.008789"
-   id="svg3065">
-  <defs
-     id="defs3067" />
-  <metadata
-     id="metadata3070">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
-     transform="translate(-199,-474.28196)"
-     id="layer1">
-    <g
-       transform="translate(44,159.34446)"
-       id="g4045">
-      <g
-         id="g4039">
-        <rect
-           width="40"
-           height="19"
-           x="155"
-           y="314.94629"
-           id="rect3785"
-           style="fill:#41547f;fill-opacity:1;stroke:none" />
-        <g
-           id="g4035">
-          <rect
-             width="38"
-             height="17"
-             x="156"
-             y="315.94629"
-             id="rect3783"
-             style="fill:none;stroke:#41547f;stroke-width:1.99999964;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-          <rect
-             width="3"
-             height="5"
-             x="194"
-             y="321.94629"
-             id="rect3822"
-             style="fill:#41547f;fill-opacity:1;stroke:none" />
-        </g>
-      </g>
-      <path
-         d="m 166.54231,326.53257 9.86732,-6.95427 -2e-5,4.86798 7.04808,-2.08626 -9.86729,6.95425 0,-4.86799 z"
-         id="path3911"
-         style="fill:#c4caca;fill-opacity:1;stroke:none" />
-    </g>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg"
+     version="1.1"
+     width="42"
+     height="19"
+     id="logo">
+	<style type="text/css"><![CDATA[
+		.fg { fill: #41547F; }
+		.bg { fill: #C4CACA; }
+	]]></style>
+	<g id="battery">
+		<path d="M 0 0  h 38  v 7  h 2  v 5  h -2  v 7  h -38
+					M 2 2  h 34  v 15  h -34  z"
+				id="border"
+		      fill-rule="evenodd"
+				class="fg" />
+		<rect width="38"
+		      height="19"
+		      x="0"
+		      y="0"
+		      id="fill" 
+		      class="fg" />
+		<path d="M 0 3  L 11 11  V 5.5  L 19 8  L 8 0  V 5.5  Z"
+		      transform="translate(9.5, 4)"
+		      class="bg" />
+	</g>
 </svg>
