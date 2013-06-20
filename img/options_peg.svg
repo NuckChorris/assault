@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="58.004456"
+   height="27.00835"
+   id="svg3077"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="options_font.svg"
+   inkscape:export-filename="/home/plejeck/Pictures/Battery Indicator/dimensions_font.png"
+   inkscape:export-xdpi="1001.72"
+   inkscape:export-ydpi="1001.72">
+  <defs
+     id="defs3079">
+    <marker
+       inkscape:stockid="DotS"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="DotS"
+       style="overflow:visible">
+      <path
+         id="path5051"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(0.2,0,0,0.2,1.48,0.2)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="DotL"
+       style="overflow:visible">
+      <path
+         id="path5045"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4134">
+      <rect
+         y="288.94629"
+         x="155"
+         height="19"
+         width="20"
+         id="rect4136"
+         style="fill:#41547f;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3779">
+      <rect
+         y="388.94629"
+         x="155"
+         height="19"
+         width="20"
+         id="rect3781"
+         style="fill:#41547f;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4733">
+      <path
+         id="path4735"
+         d="m 573.28571,317.1479 20,0 0,19 -20,0 z"
+         style="fill:#41547f;fill-opacity:1;stroke:none"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="15.464329"
+     inkscape:cx="31.103838"
+     inkscape:cy="13.504175"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="4"
+     fit-margin-left="8"
+     fit-margin-right="8"
+     fit-margin-bottom="4"
+     inkscape:window-width="1276"
+     inkscape:window-height="771"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata3082">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-565.28125,-313.1479)">
+    <rect
+       style="opacity:1;fill:#41547f;fill-opacity:1;stroke:none"
+       id="rect4075"
+       width="2"
+       height="5"
+       x="613.28528"
+       y="324.14789" />
+    <g
+       id="g5837"
+       style="opacity:0.3">
+      <rect
+         y="318.14789"
+         x="574.28571"
+         height="17"
+         width="38"
+         id="rect4073"
+         style="opacity:1;fill:#c4caca;fill-opacity:1;stroke:#41547f;stroke-width:1.99999963999999997;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         id="rect4069"
+         d="m 573.28571,317.1479 20,0 0,19 -20,0 z"
+         style="opacity:1;fill:#41547f;fill-opacity:1;stroke:none"
+         inkscape:connector-curvature="0" />
+    </g>
+    <text
+       sodipodi:linespacing="125%"
+       id="text3921"
+       y="326.11789"
+       x="604.61853"
+       style="font-size:6.85448503px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:2px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'M+ 1p';-inkscape-font-specification:'M+ 1p Medium'"
+         y="326.11789"
+         x="604.61853"
+         sodipodi:role="line"
+         id="tspan4447">Peg</tspan><tspan
+         style="font-size:2px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'M+ 1p';-inkscape-font-specification:'M+ 1p Medium'"
+         y="328.61789"
+         x="604.61853"
+         sodipodi:role="line"
+         id="tspan5843">Height</tspan></text>
+    <g
+       id="g3957"
+       transform="translate(20.886777,3.1374906)">
+      <text
+         sodipodi:linespacing="125%"
+         id="text3949"
+         y="316.77844"
+         x="593.28571"
+         style="font-size:6.85448503px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:2px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'M+ 1p';-inkscape-font-specification:'M+ 1p Medium'"
+           y="316.77844"
+           x="593.28571"
+           sodipodi:role="line"
+           id="tspan3983">Peg Width</tspan></text>
+    </g>
+    <g
+       id="g5848">
+      <g
+         id="g3925"
+         transform="matrix(0.90009001,0,0,1,478.79198,28.201607)">
+        <path
+           sodipodi:nodetypes="cccccc"
+           inkscape:connector-curvature="0"
+           d="m 147.92152,300.94629 c 0,-1.66667 0,-3.33333 0,-5 m -1,5 2,0 m -2,-5 2,0"
+           style="fill:#c4caca;fill-opacity:1;stroke:#41547f;stroke-width:0.21080796;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           id="path3919" />
+      </g>
+      <path
+         inkscape:connector-curvature="0"
+         id="path5846"
+         d="m 611.84002,326.6479 -3.03926,0"
+         style="color:#000000;fill:#c4caca;fill-opacity:1;fill-rule:nonzero;stroke:#41547f;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </g>
+    <g
+       id="g5853"
+       transform="matrix(0,1,-0.39297497,0,742.70645,-289.21372)">
+      <g
+         transform="matrix(0.90009001,0,0,1,478.79198,28.201607)"
+         id="g5855">
+        <path
+           id="path5857"
+           style="fill:#c4caca;fill-opacity:1;stroke:#41547f;stroke-width:0.33628273;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 147.92152,300.94629 c 0,-1.66667 0,-3.33333 0,-5 m -1,5 2,0 m -2,-5 2,0"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccccc" />
+      </g>
+      <path
+         style="color:#000000;fill:#c4caca;fill-opacity:1;fill-rule:nonzero;stroke:#41547f;stroke-width:0.31904179;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         d="m 611.84002,326.6479 -2.13905,0"
+         id="path5859"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+  </g>
+</svg>
