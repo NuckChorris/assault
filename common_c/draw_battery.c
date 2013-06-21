@@ -4,8 +4,11 @@
 cairo_path_t *battery_bolt_generate
 (int width, int height)
 {
-	cairo_surface_t *surface = cairo_image_surface_create(CAIRO_FORMAT_A8, width, height);
-	cairo_t *cr = cairo_create(surface);
+	cairo_surface_t *surface;
+	cairo_t *cr;
+
+	surface = cairo_image_surface_create(CAIRO_FORMAT_A8, width, height);
+	cr = cairo_create(surface);
 	cairo_surface_destroy(surface);
 	cairo_new_path(cr);
 
@@ -36,16 +39,20 @@ gboolean battery_bolt_draw
 cairo_path_t *battery_border_generate
 (int width, int height, int stroke_width, int peg_width, int peg_height)
 {
-	cairo_surface_t *surface = cairo_image_surface_create(CAIRO_FORMAT_A8,
-	                                                      width + stroke_width * 2 + peg_width,
-	                                                      height + stroke_width * 2);
-	cairo_t *cr = cairo_create(surface);
+	cairo_surface_t *surface;
+	cairo_t *cr;
+	int outside_width, outside_height, peg_top;
+
+	surface = cairo_image_surface_create(CAIRO_FORMAT_A8,
+	                                     width + stroke_width * 2 + peg_width,
+	                                     height + stroke_width * 2);
+	cr = cairo_create(surface);
 	cairo_surface_destroy(surface);
 	cairo_new_path(cr);
 
-	int outside_width = width + stroke_width * 2;
-	int outside_height = height + stroke_width * 2;
-	int peg_top = CENTERED(height + stroke_width * 2, peg_height);
+	outside_width = width + stroke_width * 2;
+	outside_height = height + stroke_width * 2;
+	peg_top = CENTERED(height + stroke_width * 2, peg_height);
 
 	// Outside of border
 //	cairo_rectangle(cr, 0, 0, outside_width, outside_height);
@@ -91,8 +98,11 @@ gboolean battery_border_draw
 cairo_path_t *battery_fill_generate
 (int width, int height, double percent)
 {
-	cairo_surface_t *surface = cairo_image_surface_create(CAIRO_FORMAT_A8, width, height);
-	cairo_t *cr = cairo_create(surface);
+	cairo_surface_t *surface;
+	cairo_t *cr;
+
+	surface = cairo_image_surface_create(CAIRO_FORMAT_A8, width, height);
+	cr = cairo_create(surface);
 	cairo_surface_destroy(surface);
 	cairo_new_path(cr);
 
@@ -118,12 +128,14 @@ gboolean battery_fill_draw
 cairo_path_t *battery_text_generate
 (char text[5], char font_face[], int font_size)
 {
-	cairo_surface_t *surface = cairo_image_surface_create(CAIRO_FORMAT_A8, 100, 100);
-	cairo_t *cr = cairo_create(surface);
+	cairo_surface_t *surface;
+	cairo_t *cr;
+	cairo_text_extents_t extents;
+
+	surface = cairo_image_surface_create(CAIRO_FORMAT_A8, 100, 100);
+	cr = cairo_create(surface);
 	cairo_surface_destroy(surface);
 	cairo_new_path(cr);
-
-	cairo_text_extents_t extents;
 
 	cairo_select_font_face(cr, font_face, CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL);
 	cairo_set_font_size(cr, font_size);
