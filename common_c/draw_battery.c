@@ -140,7 +140,6 @@ cairo_path_t *battery_text_generate
 	cairo_surface_t *surface;
 	cairo_t *cr;
 	cairo_path_t *path;
-	cairo_text_extents_t extents;
 
 	surface = cairo_image_surface_create(CAIRO_FORMAT_A8, 100, 100);
 	cr = cairo_create(surface);
@@ -149,8 +148,6 @@ cairo_path_t *battery_text_generate
 
 	cairo_select_font_face(cr, font_face, CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL);
 	cairo_set_font_size(cr, font_size);
-
-	cairo_text_extents(cr, text, &extents);
 
 	cairo_move_to(cr, 0, 0);
 	cairo_text_path(cr, text);
