@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
-#include "battery_level_sys.h"
+#include "acpi.h"
 
-gboolean battery_get_charging_from_sys
+gboolean acpi_get_charging
 ()
 {
 	FILE *fp;
@@ -26,7 +26,7 @@ gboolean battery_get_charging_from_sys
 	return FALSE;
 }
 
-gdouble battery_get_percent_from_sys
+gdouble acpi_get_percent
 ()
 {
 	FILE *fp_full;

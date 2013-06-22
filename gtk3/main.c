@@ -2,7 +2,7 @@
 #include "variables.h"
 #include "draw_battery.h"
 #include "utils.h"
-#include "battery_level_sys.h"
+#include "acpi.h"
 
 GtkWidget *window, *grid, *drawing_area, *spn_percent, *chk_charging, *chk_real_battery;
 
@@ -52,7 +52,7 @@ gboolean battery_get_charging
 ()
 {
 	if (battery_real()) {
-		return battery_get_charging_from_sys();
+		return acpi_get_charging();
 	} else {
 		return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(chk_charging));
 	}
@@ -62,7 +62,7 @@ gdouble battery_get_percent
 ()
 {
 	if (battery_real()) {
-		return battery_get_percent_from_sys();
+		return acpi_get_percent();
     } else {
 		return gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spn_percent)) / 100.0;
 	}

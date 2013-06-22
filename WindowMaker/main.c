@@ -2,7 +2,7 @@
 #include "variables.h"
 #include "draw_battery.h"
 #include "utils.h"
-#include "battery_level_sys.h"
+#include "acpi.h"
 
 GtkWidget *window, *grid, *drawing_area;
 
@@ -22,13 +22,13 @@ gboolean battery_get_critical
 gboolean battery_get_charging
 ()
 {
-	return battery_get_charging_from_sys();
+	return acpi_get_charging();
 }
 
 gdouble battery_get_percent
 ()
 {
-	return battery_get_percent_from_sys();
+	return acpi_get_percent();
 }
 
 gboolean draw_callback
