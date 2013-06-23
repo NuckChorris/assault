@@ -33,6 +33,10 @@ and send a [pull request](https://github.com/NuckChorris/assault/pulls)*
 2. Don't pester me.
 3. Maybe I'll eventually add `INSTALL.md` files to each folder.
 
+## Support
+You can file a [bug report](https://github.com/NuckChorris/assault/issues/new) 
+or find us in [#assault on irc.dongcorp.org](irc://irc.dongcorp.org:6667/#assault).
+
 ## License
 All work where not otherwise indicated is released under the
 [MIT License](./LICENSE) where applicable, or otherwise released into the public
