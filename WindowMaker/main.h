@@ -1,4 +1,8 @@
+#pragma once
+
 #include <gtk/gtk.h>
+#include <cairo/cairo.h>
+
 GtkWidget *window, *grid, *drawing_area;
 
 gboolean do_redraw ();

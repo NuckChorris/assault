@@ -135,7 +135,7 @@ bool battery_fill_draw
 }
 
 cairo_path_t *battery_text_generate
-(char text[5], char font_face[], int font_size)
+(char *text, char *font_face, int font_size)
 {
 	cairo_surface_t *surface;
 	cairo_t *cr;
@@ -159,7 +159,7 @@ cairo_path_t *battery_text_generate
 }
 
 bool battery_text_draw
-(cairo_t *cr, cairo_pattern_t *c, int center_x, int center_y, char text[5], char font_face[], int font_size)
+(cairo_t *cr, cairo_pattern_t *c, int center_x, int center_y, char *text, char *font_face, int font_size)
 {
 	cairo_path_t *text_path = battery_text_generate(text, font_face, font_size);
 

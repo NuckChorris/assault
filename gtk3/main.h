@@ -1,4 +1,8 @@
+#pragma once
+
 #include <gtk/gtk.h>
+#include <cairo/cairo.h>
+
 GtkWidget *window, *grid, *drawing_area, *spn_percent, *chk_charging, *chk_real_battery;
 
 gboolean do_redraw (gpointer user_data);
