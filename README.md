@@ -35,8 +35,7 @@ and send a [pull request](https://github.com/NuckChorris/assault/pulls)*
 
 ## Support
 You can file a [bug report](https://github.com/NuckChorris/assault/issues/new) 
-or find us in <a href="irc://irc.dongcorp.org:6667/assault">#assault on
-irc.dongcorp.org</a>.
+or find us in **#assault** on [DongCorp](http://dongcorp.org/irc/).
 
 ## License
 All work where not otherwise indicated is released under the
