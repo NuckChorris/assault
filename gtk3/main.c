@@ -88,7 +88,7 @@ gboolean draw_callback
 	cairo_rectangle(cr, (MARGIN / 2) + STROKE_WIDTH, (MARGIN / 2) + STROKE_WIDTH, BATTERY_WIDTH, BATTERY_HEIGHT);
 	#endif
 
-    cairo_set_source_rgba(cr, COLOR_BACKGROUND, OPACITY_BACKGROUND);
+	cairo_set_source_rgba(cr, COLOR_BACKGROUND, OPACITY_BACKGROUND);
 	cairo_fill(cr);
 
 	// Decide on a color
@@ -106,13 +106,13 @@ gboolean draw_callback
 	                               PEG_WIDTH,
 	                               PEG_HEIGHT);
 
-	
+
 	int fill_x = CENTERED(width, BATTERY_WIDTH);
 	int fill_y = CENTERED(height, BATTERY_HEIGHT);
 
 	// Set fill style
 	cairo_set_fill_rule(cr, CAIRO_FILL_RULE_EVEN_ODD);
-	
+
 	// Generate battery fill
 	fill = battery_fill_generate(BATTERY_WIDTH, BATTERY_HEIGHT, battery_get_percent());
 	cairo_translate(cr, fill_x, fill_y);
@@ -175,7 +175,7 @@ static void activate
 	g_signal_connect(G_OBJECT(drawing_area), "draw", G_CALLBACK(draw_callback), NULL);
 	// Add a timer for redraw
 	g_timeout_add_seconds(UPDATE_SECONDS, (GSourceFunc)do_redraw, NULL);
-	
+
 	// Percentage spinner
 	stepper_adjustment = gtk_adjustment_new(50, 0, 100, 1, 0, 0);
 	spn_percent = gtk_spin_button_new(stepper_adjustment, 1.0, 0);
@@ -191,7 +191,7 @@ static void activate
 	chk_charging = gtk_check_button_new_with_label("Charging");
 	gtk_grid_attach(GTK_GRID(grid), chk_charging, 0, 3, 1, 1);
 	g_signal_connect(G_OBJECT(chk_charging), "toggled", G_CALLBACK(toggle_callback), NULL);
-	
+
 	// Display it
 	gtk_widget_show_all(window);
 }
