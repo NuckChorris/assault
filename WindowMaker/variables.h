@@ -3,6 +3,9 @@
 // Time between updates (in seconds)
 #define UPDATE_SECONDS 5
 
+// Battery ID
+#define BATTERY_ID "BAT0"
+
 // Critical battery level
 #define CRITICAL_LEVEL .15
 

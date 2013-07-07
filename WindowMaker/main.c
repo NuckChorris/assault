@@ -22,13 +22,13 @@ gboolean battery_get_critical
 gboolean battery_get_charging
 ()
 {
-	return acpi_get_charging();
+	return acpi_get_charging(BATTERY_ID);
 }
 
 gdouble battery_get_percent
 ()
 {
-	return acpi_get_percent();
+	return acpi_get_percent(BATTERY_ID);
 }
 
 gboolean draw_callback

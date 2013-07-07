@@ -52,7 +52,7 @@ gboolean battery_get_charging
 ()
 {
 	if (battery_real()) {
-		return acpi_get_charging();
+		return acpi_get_charging(BATTERY_ID);
 	} else {
 		return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(chk_charging));
 	}
@@ -62,7 +62,7 @@ gdouble battery_get_percent
 ()
 {
 	if (battery_real()) {
-		return acpi_get_percent();
+		return acpi_get_percent(BATTERY_ID);
     } else {
 		return gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spn_percent)) / 100.0;
 	}

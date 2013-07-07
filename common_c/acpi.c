@@ -2,64 +2,54 @@
 #include <string.h>
 #include "acpi.h"
 
-gboolean acpi_get_charging
-()
+gboolean acpi_get_property
+(gchar *out, gchar *battery_id, gchar *property)
 {
 	FILE *fp;
-	char b[9];
-
-	// Look for the status file
-	fp = fopen("/sys/class/power_supply/BAT0/status", "r");
-	if (fp != NULL) {
-		if (fgets(b, 9, fp)) {
-			fclose(fp);
-
-			if (strcmp(b, "Charging") == 0) {
-				return TRUE;
-			} else {
-				return FALSE;
-			}
-		}
+	gchar filename[64];
+	snprintf(filename, 64, ACPI_PATH, battery_id, property);
+	fp = fopen(filename, "r");
+	if (fp != NULL && fgets(out, 64, fp)) {
+		fclose(fp);
+		return TRUE;
 	}
-
-	// If we're here, we don't know what's happening, so return FALSE
 	return FALSE;
 }
 
-gdouble acpi_get_percent
-()
+gboolean acpi_get_charging
+(gchar *battery_id)
 {
-	FILE *fp_full;
-	FILE *fp_now;
-	unsigned int full;
-	unsigned int now;
+	gchar value[64];
+	if (acpi_get_property(value, battery_id, "status")) {
+		if (strcmp(value, "Charging") == 0) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	} else {
+		return FALSE;
+	}
+}
 
-	// Check for the charge_{full,now} entries
-	fp_full = fopen("/sys/class/power_supply/BAT0/charge_full", "r");
-	if (fp_full != NULL) {
-		if (fscanf(fp_full, "%d", &full) == 1) {
-			// Looks like we have what we want.
-			fp_now = fopen("/sys/class/power_supply/BAT0/charge_now", "r");
-			fscanf(fp_now, "%d", &now);
+gdouble acpi_get_percent
+(gchar *battery_id)
+{
+	gchar val_full[64], val_now[64];
+	guint full;
+	guint now;
 
-			fclose(fp_full);
-			fclose(fp_now);
-
+	if (acpi_get_property(val_full, battery_id, "charge_full")
+	 && sscanf(val_full, "%d", &full) == 1) {
+		if (acpi_get_property(val_now, battery_id, "charge_now")
+		 && sscanf(val_now, "%d", &now)) {
 			return ((double)now / (double)full);
 		}
 	}
 
-	// Check for the energy_{full,now} entries
-	fp_full = fopen("/sys/class/power_supply/BAT0/energy_full", "r");
-	if (fp_full != NULL) {
-		if (fscanf(fp_full, "%d", &full) == 1) {
-			// Looks like we have what we want.
-			fp_now = fopen("/sys/class/power_supply/BAT0/energy_now", "r");
-			fscanf(fp_now, "%d", &now);
-
-			fclose(fp_full);
-			fclose(fp_now);
-
+	if (acpi_get_property(val_full, battery_id, "energy_full")
+	 && sscanf(val_full, "%d", &full) == 1) {
+		if (acpi_get_property(val_now, battery_id, "energy_now")
+		 && sscanf(val_now, "%d", &now)) {
 			return ((double)now / (double)full);
 		}
 	}
