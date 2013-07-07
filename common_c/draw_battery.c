@@ -26,7 +26,7 @@ cairo_path_t *battery_bolt_generate
 	return path;
 }
 
-gboolean battery_bolt_draw
+bool battery_bolt_draw
 (cairo_t *cr, cairo_pattern_t *c, int x, int y, int w, int h)
 {
 	cairo_path_t *bolt = battery_bolt_generate(w, h);
@@ -36,7 +36,7 @@ gboolean battery_bolt_draw
 	cairo_set_source(cr, c);
 	cairo_fill(cr);
 	cairo_translate(cr, -x, -y);
-	return TRUE;
+	return true;
 }
 
 cairo_path_t *battery_border_generate
@@ -83,7 +83,7 @@ cairo_path_t *battery_border_generate
 	return path;
 }
 
-gboolean battery_border_draw
+bool battery_border_draw
 (cairo_t *cr, cairo_pattern_t *c, int x, int y, int w, int h, int sw, int pw, int ph)
 {
 	cairo_path_t *border = battery_border_generate(w, h, sw, pw, ph);
@@ -98,7 +98,7 @@ gboolean battery_border_draw
 
 	cairo_set_fill_rule(cr, CAIRO_FILL_RULE_WINDING);
 
-	return TRUE;
+	return true;
 }
 
 cairo_path_t *battery_fill_generate
@@ -121,7 +121,7 @@ cairo_path_t *battery_fill_generate
 	return path;
 }
 
-gboolean battery_fill_draw
+bool battery_fill_draw
 (cairo_t *cr, cairo_pattern_t *c, int x, int y, int w, int h, double p)
 {
 	cairo_path_t *fill = battery_fill_generate(w, h, p);
@@ -131,7 +131,7 @@ gboolean battery_fill_draw
 	cairo_set_source(cr, c);
 	cairo_fill(cr);
 	cairo_translate(cr, -x, -y);
-	return TRUE;
+	return true;
 }
 
 cairo_path_t *battery_text_generate
@@ -158,7 +158,7 @@ cairo_path_t *battery_text_generate
 	return path;
 }
 
-gboolean battery_text_draw
+bool battery_text_draw
 (cairo_t *cr, cairo_pattern_t *c, int center_x, int center_y, char text[5], char font_face[], int font_size)
 {
 	cairo_path_t *text_path = battery_text_generate(text, font_face, font_size);
@@ -178,5 +178,5 @@ gboolean battery_text_draw
 	cairo_set_source(cr, c);
 	cairo_fill(cr);
 	cairo_translate(cr, -text_x, -text_y);
-	return TRUE;
+	return true;
 }
