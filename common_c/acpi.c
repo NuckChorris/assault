@@ -58,5 +58,3 @@ double acpi_get_percent
 	
 	return 0.0;
 }
-
-// vim: set noexpandtab

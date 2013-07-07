@@ -208,5 +208,3 @@ int main
 	g_object_unref (app);
 	return status;
 }
-
-// vim: set noexpandtab

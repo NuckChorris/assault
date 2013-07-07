@@ -153,5 +153,3 @@ PluginClass assault_plugin_class = {
    constructor : lxpanel_constructor,
    destructor  : lxpanel_destructor,
 };
-
-// vim: set noexpandtab
