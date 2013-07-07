@@ -71,13 +71,13 @@ gboolean draw_callback
 	                               PEG_WIDTH,
 	                               PEG_HEIGHT);
 
-	
+
 	int fill_x = CENTERED(width, BATTERY_WIDTH);
 	int fill_y = CENTERED(height, BATTERY_HEIGHT);
 
 	// Set fill style
 	cairo_set_fill_rule(cr, CAIRO_FILL_RULE_EVEN_ODD);
-	
+
 	// Generate battery fill
 	fill = battery_fill_generate(BATTERY_WIDTH, BATTERY_HEIGHT, battery_get_percent());
 	cairo_translate(cr, fill_x, fill_y);
@@ -95,7 +95,7 @@ gboolean draw_callback
 		cairo_text_extents_t extents;
 		char strpercent[5];
 		snprintf(strpercent, 5, "%i%%", (int)(battery_get_percent() * 100));
-		
+
 		cairo_select_font_face(cr, FONT_FACE, CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL);
 		cairo_set_font_size(cr, FONT_SIZE);
 		cairo_text_extents(cr, strpercent, &extents);
@@ -136,20 +136,13 @@ static int lxpanel_constructor
 	return TRUE;
 }
 
-static void lxpanel_destructor
-(Plugin *p)
-{
-	// Don't need to do anything here. Ehehe.
-}
-
 PluginClass assault_plugin_class = {
-   PLUGINCLASS_VERSIONING,
-   type : "assault",
-   name : "Assault",
-   version: "1.0",
-   description : "A battery indicator.",
-   one_per_system : FALSE,
-   expand_available : FALSE,
-   constructor : lxpanel_constructor,
-   destructor  : lxpanel_destructor,
+	PLUGINCLASS_VERSIONING,
+	type : "assault",
+	name : "Assault",
+	version: "1.0",
+	description : "A battery indicator.",
+	one_per_system : FALSE,
+	expand_available : FALSE,
+	constructor : lxpanel_constructor,
 };
