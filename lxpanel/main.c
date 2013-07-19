@@ -122,14 +122,14 @@ static int lxpanel_constructor
 {
 	(void)fp;
 	drawing_area = gtk_drawing_area_new();
-	gtk_widget_set_size_request(drawing_area, BATTERY_WIDTH + MARGIN, BATTERY_HEIGHT + MARGIN);
+	gtk_widget_set_size_request(drawing_area, BATTERY_WIDTH + PEG_WIDTH + MARGIN, BATTERY_HEIGHT + MARGIN);
 	g_signal_connect(G_OBJECT(drawing_area), "expose_event", G_CALLBACK(draw_callback), NULL);
 	// Add a timer for redraw
 	g_timeout_add_seconds(UPDATE_SECONDS, &do_redraw, NULL);
 
 	p->pwid = gtk_event_box_new();
 	gtk_container_add(GTK_CONTAINER(p->pwid), GTK_WIDGET(drawing_area));
-	gtk_widget_set_size_request(p->pwid, 40, 25);
+	gtk_widget_set_size_request(p->pwid, BATTERY_WIDTH + PEG_WIDTH + MARGIN, BATTERY_HEIGHT + MARGIN);
 	gtk_widget_set_has_window(p->pwid, FALSE);
 	gtk_widget_show_all(p->pwid);
 
