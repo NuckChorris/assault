@@ -11,7 +11,7 @@ LDFLAGS += -shared
 LDFLAGS += `pkg-config --libs lxpanel gtk+-2.0`
 LDFLAGS += $(foreach includedir,$(program_INCLUDE_DIRS),-L$(includedir))
 
-.PHONY: all clean distclean
+.PHONY: all clean distclean install
 
 all: $(program_NAME)
 
@@ -21,5 +21,8 @@ $(program_NAME): $(program_OBJS)
 clean:
 	@- $(RM) $(program_NAME)
 	@- $(RM) $(program_OBJS)
+
+install: $(program_NAME)
+	install -Dm755 $(program_NAME) /usr/lib/lxpanel/plugins/$(program_NAME)
 
 distclean: clean
