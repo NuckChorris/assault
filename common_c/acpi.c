@@ -1,18 +1,23 @@
 #include <stdio.h>
 #include <string.h>
 #include "acpi.h"
+#include "utils.h"
 
 bool acpi_get_property
 (char *out, char *battery_id, char *property)
 {
 	FILE *fp;
 	char filename[64];
+	char read[64];
 
 	snprintf(filename, 64, ACPI_PATH, battery_id, property);
 	fp = fopen(filename, "r");
-	if (fp != NULL && fgets(out, 64, fp)) {
+	if (fp != NULL && fgets(read, 64, fp)) {
 		fclose(fp);
-		return true;
+		if (trimwhitespace(out, 64, read) != 0) {
+			return true;
+		}
+		return false;
 	}
 	return false;
 }
@@ -55,6 +60,6 @@ double acpi_get_percent
 			return ((double)now / (double)full);
 		}
 	}
-	
+
 	return 0.0;
 }
