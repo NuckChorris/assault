@@ -1,3 +1,6 @@
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 #include "utils.h"
 
 // Stores the trimmed input string into the given output buffer, which must be
