@@ -136,6 +136,8 @@ static int lxpanel_constructor
 	return TRUE;
 }
 
+static void lxpanel_destructor (UNUSED Plugin *p) {}
+
 PluginClass assault_plugin_class = {
 	PLUGINCLASS_VERSIONING,
 	type : "assault",
@@ -145,4 +147,5 @@ PluginClass assault_plugin_class = {
 	one_per_system : FALSE,
 	expand_available : FALSE,
 	constructor : lxpanel_constructor,
+	destructor : lxpanel_destructor,
 };

@@ -11,3 +11,4 @@ gboolean battery_get_charging ();
 gdouble battery_get_percent ();
 gboolean draw_callback (GtkWidget *widget, GdkEventExpose *event, gpointer data);
 static int lxpanel_constructor (Plugin *p, char **fp);
+static void lxpanel_destructor (Plugin *p);
