@@ -2,6 +2,27 @@
 #include <string.h>
 #include "acpi.h"
 
+bool acpi_average_create
+()
+{
+	acpi_average *avg;
+	avg->current = 0;
+	avg->length = 0;
+	avg = 0;
+}
+
+double acpi_average_push
+(acpi_average *avg, double item)
+{
+	if (++(avg->length) > ACPI_AVERAGE_SIZE)
+		avg->length = ACPI_AVERAGE_SIZE;
+
+	avg->current = ++(avg->i) % ACPI_AVERAGE_SIZE;
+
+	avg->items[avg->i] = item;
+	avg->current += avg->items[avg->i] / avg->length;
+}
+
 bool acpi_get_property
 (char *out, char *battery_id, char *property)
 {
