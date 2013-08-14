@@ -26,9 +26,6 @@
 #define FONT_FACE "Sans"
 #define FONT_SIZE 12.0
 
-// Margin
-#define MARGIN 4 * 2
-
 // Stroke Width
 #define STROKE_WIDTH 2.0
 

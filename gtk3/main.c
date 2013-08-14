@@ -85,7 +85,10 @@ gboolean draw_callback
 	#ifdef BACKGROUND_FILL_ENTIRE_WIDGET
 	cairo_rectangle(cr, 0, 0, width, height);
 	#else
-	cairo_rectangle(cr, (MARGIN / 2) + STROKE_WIDTH, (MARGIN / 2) + STROKE_WIDTH, BATTERY_WIDTH, BATTERY_HEIGHT);
+	cairo_rectangle(cr, (int)CENTERED(width, BATTERY_WIDTH + STROKE_WIDTH),
+	                    (int)CENTERED(height, BATTERY_HEIGHT + STROKE_WIDTH).
+	                    BATTERY_WIDTH,
+	                    BATTERY_HEIGHT);
 	#endif
 
 	cairo_set_source_rgba(cr, COLOR_BACKGROUND, OPACITY_BACKGROUND);
