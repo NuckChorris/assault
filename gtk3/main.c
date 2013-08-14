@@ -42,6 +42,8 @@ gboolean battery_real
 	return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(chk_real_battery));
 }
 
+// TODO: Figure out why after wakeup from sleep, there's a mismatch between
+// critical and real percentage.
 gboolean battery_get_critical
 ()
 {
