@@ -22,7 +22,7 @@ Maybe.  Assault currently has support for the following Window Managers, Docks,
 and Bars:
  * WindowMaker DockApp
  * lxpanel
- * AwesomeWM (coming soon)
+ * AwesomeWM
 
 *Is your WM not listed here?  File a
 [feature request](https://github.com/NuckChorris/assault/issues/new) or fork it
