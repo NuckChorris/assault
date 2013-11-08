@@ -113,7 +113,6 @@ local battery_text_draw = function (cr, args, text)
 
 	cr:translate(text_x, text_y)
 	cr:append_path(battery_text_generate(text, font))
-	cr:fill()
 	cr:translate(-text_x, -text_y)
 
 	return true
@@ -151,11 +150,10 @@ function assault.draw (assault, wibox, cr, width, height)
 	local percent = acpi_battery_percent(data[assault].battery)
 
 	local draw_color = color(data[assault].normal_color)
-	if percent <= data[assault].critical_level then
-		draw_color = color(data[assault].critical_color)
-	end
 	if acpi_battery_is_charging(data[assault].battery) then
 		draw_color = color(data[assault].charging_color)
+	elseif percent <= data[assault].critical_level then
+		draw_color = color(data[assault].critical_color)
 	end
 
 	-- Draw fill
