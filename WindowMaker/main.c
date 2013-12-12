@@ -4,7 +4,7 @@
 #include "utils.h"
 #include "acpi.h"
 
-GtkWidget *window, *grid, *drawing_area;
+GtkWidget *dockwin, *iconwin, *drawing_area;
 
 gboolean do_redraw
 (UNUSED gpointer user_data)
@@ -113,10 +113,20 @@ gboolean draw_callback
 static void activate
 (GtkApplication *app, UNUSED gpointer user_data)
 {
-
 	// Window
-	window = gtk_application_window_new(app);
-	gtk_window_set_title(GTK_WINDOW(window), "Battery Indicator");
+	dockwin = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+	iconwin = gtk_window_new(GTK_WINDOW_POPUP);
+	gtk_window_set_wmclass(GTK_WINDOW(dockwin), "Assault", "DockApp");
+	gtk_window_set_wmclass(GTK_WINDOW(iconwin), "Assault", "DockApp");
+	gtk_widget_set_size_request(dockwin, 64, 64);
+	gtk_widget_set_size_request(iconwin, 64, 64);
+
+	gtk_widget_realize(dockwin);
+	gtk_widget_realize(iconwin);
+
+	GList *list = NULL;
+	list = g_list_prepend(list, iconwin->window);
+	gdk_window_set_icon_list(dockwin->window, list);
 
 	// Set up Drawing Area
 	drawing_area = gtk_drawing_area_new();
@@ -124,19 +134,12 @@ static void activate
 	g_signal_connect(G_OBJECT(drawing_area), "draw", G_CALLBACK(draw_callback), NULL);
 	// Add a timer for redraw
 	g_timeout_add_seconds(UPDATE_SECONDS, &do_redraw, NULL);
-	gtk_container_add(GTK_CONTAINER(window), drawing_area);
-
-	// Set size
-	GdkGeometry hints; 
-	hints.min_width = 64;
-	hints.max_width = 64;
-	hints.min_height = 64;
-	hints.min_height = 64;
-	gtk_window_set_geometry_hints(GTK_WINDOW(window), NULL, &hints, (GDK_HINT_MIN_SIZE | GDK_HINT_MAX_SIZE));
-	gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
+	gtk_container_add(GTK_CONTAINER(iconwin), drawing_area);
 
 	// And display it.
-	gtk_widget_show_all(window);
+	gtk_widget_show(iconwin);
+	gtk_widget_show(dockwin);
+	gdk_window_withdraw(dockwin->window);
 }
 
 int main

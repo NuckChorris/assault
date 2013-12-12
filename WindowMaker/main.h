@@ -1,6 +1,7 @@
 #pragma once
 
 #include <gtk/gtk.h>
+#include <gdk/gdk.h>
 #include <cairo/cairo.h>
 
 GtkWidget *window, *grid, *drawing_area;
