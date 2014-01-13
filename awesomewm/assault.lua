@@ -166,7 +166,7 @@ function assault.draw (assault, wibox, cr, width, height)
 	cr:translate(data[assault].stroke_width, data[assault].stroke_width)
 	cr:append_path(battery_fill_generate(data[assault].width, data[assault].height, percent))
 
-	if acpi_is_on_ac_power() then
+	if acpi_is_on_ac_power(data[assault].adapter) then
 		local bolt_x = (data[assault].width  / 2.0) - (data[assault].bolt_width  / 2.0)
 		local bolt_y = (data[assault].height / 2.0) - (data[assault].bolt_height / 2.0)
 		cr:translate( bolt_x,  bolt_y)
