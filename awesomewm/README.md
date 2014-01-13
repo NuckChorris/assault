@@ -34,6 +34,7 @@ Configuration options
 ```lua
 assault({
    battery = "BAT0", -- battery ID to get data from
+   adapter = "AC", -- ID of the AC adapter to get data from
    width = 36, -- width of battery
    height = 15, -- height of battery
    bolt_width = 19, -- width of charging bolt
