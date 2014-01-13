@@ -25,8 +25,8 @@ local round = function (num, idp)
 	return tonumber(string.format("%." .. (idp or 0) .. "f", num))
 end
 
-local acpi_is_on_ac_power = function ()
-	local f = io.open('/sys/class/power_supply/AC/online'):read()
+local acpi_is_on_ac_power = function (adapter)
+	local f = io.open('/sys/class/power_supply/' .. adapter .. '/online'):read()
 	return string.find(f, '1')
 end
 
@@ -119,6 +119,11 @@ local battery_text_draw = function (cr, args, text)
 end
 
 local battery_fill_generate = function (width, height, percent)
+	-- Sanity check on the percentage
+	local percent = percent
+	if percent > 1 then percent = 1 end
+	if percent < 0 then percent = 0 end
+
 	local surface = cairo.ImageSurface(cairo.Format.A8, width, height)
 	local cr = cairo.Context(surface)
 	cr:new_path()
@@ -128,8 +133,9 @@ local battery_fill_generate = function (width, height, percent)
 end
 
 local properties = {
-	"battery", "width", "height", "peg_top", "peg_height", "peg_width",
-	"stroke_width", "font", "critical_level",
+	"battery", "adapter", "width", "height", "peg_top",
+	"peg_height", "peg_width", "stroke_width",
+	"font", "critical_level",
 	"normal_color", "charging_color", "critical_color"
 }
 
@@ -176,19 +182,20 @@ end
 
 -- Build properties function
 for _, prop in ipairs(properties) do
-    if not assault["set_" .. prop] then
-        assault["set_" .. prop] = function(widget, value)
-            data[widget][prop] = value
-            widget:emit_signal("widget::updated")
-            return widget
-        end
-    end
+	if not assault["set_" .. prop] then
+		assault["set_" .. prop] = function(widget, value)
+			data[widget][prop] = value
+			widget:emit_signal("widget::updated")
+			return widget
+		end
+	end
 end
 
 --- Create an assault widget
 function assault.new (args)
 	local args = args or {}
 	local battery = args.battery or 'BAT0'
+	local adapter = args.adapter or 'AC'
 	local stroke_width = args.stroke_width or 2
 	local width = args.width or 36
 	local height = args.height or 15
@@ -209,6 +216,7 @@ function assault.new (args)
 
 	data[widget] = {
 		battery = battery,
+		adapter = adapter,
 		width = width,
 		height = height,
 		bolt_width = bolt_width,
