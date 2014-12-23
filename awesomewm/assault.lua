@@ -195,7 +195,7 @@ end
 function assault.new (args)
 	local args = args or {}
 	local battery = args.battery or 'BAT0'
-    local prefix = args.prefix or 'energy'
+	local prefix = args.prefix or 'energy'
 	local adapter = args.adapter or 'AC'
 	local stroke_width = args.stroke_width or 2
 	local width = args.width or 36
@@ -217,7 +217,7 @@ function assault.new (args)
 
 	data[widget] = {
 		battery = battery,
-        prefix = prefix,
+		prefix = prefix,
 		adapter = adapter,
 		width = width,
 		height = height,
