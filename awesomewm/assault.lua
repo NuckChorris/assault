@@ -36,12 +36,22 @@ local acpi_battery_is_charging = function (battery)
 	return string.find(f:read(), 'Charging')
 end
 
-local acpi_battery_percent = function (battery, prefix)
-	local f = io.open('/sys/class/power_supply/' .. battery .. '/' .. prefix .. '_now')
-	if f == nil then return 0 end
-	local now = tonumber(f:read())
-	local full = tonumber(io.open('/sys/class/power_supply/' .. battery .. '/' .. prefix .. '_full'):read())
-	return now / full
+local acpi_battery_percent = function (battery)
+	local f = io.open('/sys/class/power_supply/' .. battery .. '/energy_now')
+	if f ~= nil then
+		local now = tonumber(f:read())
+		local full = tonumber(io.open('/sys/class/power_supply/' .. battery .. '/energy_full'):read())
+		return now / full
+	end
+
+	f = io.open('/sys/class/power_supply/' .. battery .. '/charge_now')
+	if f ~= nil then
+		local now = tonumber(f:read())
+		local full = tonumber(io.open('/sys/class/power_supply/' .. battery .. '/charge_full'):read())
+		return now / full
+	end
+
+	return 0
 end
 
 local battery_bolt_generate = function (width, height)
@@ -133,7 +143,7 @@ local battery_fill_generate = function (width, height, percent)
 end
 
 local properties = {
-	"battery", "prefix", "adapter", "width", "height", "peg_top",
+	"battery", "adapter", "width", "height", "peg_top",
 	"peg_height", "peg_width", "stroke_width",
 	"font", "critical_level",
 	"normal_color", "charging_color", "critical_color"
@@ -153,7 +163,7 @@ function assault.draw (assault, wibox, cr, width, height)
 	}))
 
 	cr.fill_rule = "EVEN_ODD"
-	local percent = acpi_battery_percent(data[assault].battery, data[assault].prefix)
+	local percent = acpi_battery_percent(data[assault].battery)
 
 	local draw_color = color(data[assault].normal_color)
 	if acpi_battery_is_charging(data[assault].battery) then
@@ -195,7 +205,6 @@ end
 function assault.new (args)
 	local args = args or {}
 	local battery = args.battery or 'BAT0'
-	local prefix = args.prefix or 'energy'
 	local adapter = args.adapter or 'AC'
 	local stroke_width = args.stroke_width or 2
 	local width = args.width or 36
@@ -217,7 +226,6 @@ function assault.new (args)
 
 	data[widget] = {
 		battery = battery,
-		prefix = prefix,
 		adapter = adapter,
 		width = width,
 		height = height,
