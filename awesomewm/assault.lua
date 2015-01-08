@@ -26,8 +26,15 @@ local round = function (num, idp)
 end
 
 local acpi_is_on_ac_power = function (adapter)
-	local f = io.open('/sys/class/power_supply/' .. adapter .. '/online'):read()
-	return string.find(f, '1')
+	local f = io.open('/sys/class/power_supply/' .. adapter .. '/online')
+	if f == nil then return false end
+	return string.find(f:read(), '1')
+end
+
+local acpi_battery_is_present = function (battery)
+	local f = io.open('/sys/class/power_supply/' .. battery .. '/present')
+	if f == nil then return false end
+	return string.find(f:read(), '1')
 end
 
 local acpi_battery_is_charging = function (battery)
@@ -166,10 +173,12 @@ function assault.draw (assault, wibox, cr, width, height)
 	local percent = acpi_battery_percent(data[assault].battery)
 
 	local draw_color = color(data[assault].normal_color)
-	if acpi_battery_is_charging(data[assault].battery) then
-		draw_color = color(data[assault].charging_color)
-	elseif percent <= data[assault].critical_level then
-		draw_color = color(data[assault].critical_color)
+	if acpi_battery_is_present(data[assault].battery) then
+		if acpi_battery_is_charging(data[assault].battery) then
+			draw_color = color(data[assault].charging_color)
+		elseif percent <= data[assault].critical_level then
+			draw_color = color(data[assault].critical_color)
+		end
 	end
 
 	-- Draw fill
@@ -182,7 +191,7 @@ function assault.draw (assault, wibox, cr, width, height)
 		cr:translate( bolt_x,  bolt_y)
 		cr:append_path(battery_bolt_generate(data[assault].bolt_width, data[assault].bolt_height))
 		cr:translate(-bolt_x, -bolt_y)
-	else
+	elseif acpi_battery_is_present(data[assault].battery) then
 		local percentstr = string.format('%d%%', round(percent * 100))
 		battery_text_draw(cr, data[assault], percentstr)
 	end
@@ -254,7 +263,7 @@ function assault.new (args)
 end
 
 function assault.mt:__call(...)
-    return assault.new(...)
+	return assault.new(...)
 end
 
 return setmetatable(assault, assault.mt)
