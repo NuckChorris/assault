@@ -44,21 +44,12 @@ local acpi_battery_is_charging = function (battery)
 end
 
 local acpi_battery_percent = function (battery)
-	local f = io.open('/sys/class/power_supply/' .. battery .. '/energy_now')
-	if f ~= nil then
-		local now = tonumber(f:read())
-		local full = tonumber(io.open('/sys/class/power_supply/' .. battery .. '/energy_full'):read())
-		return now / full
-	end
-
-	f = io.open('/sys/class/power_supply/' .. battery .. '/charge_now')
-	if f ~= nil then
-		local now = tonumber(f:read())
-		local full = tonumber(io.open('/sys/class/power_supply/' .. battery .. '/charge_full'):read())
-		return now / full
-	end
-
-	return 0
+	local now  = io.open('/sys/class/power_supply/' .. battery .. '/energy_now') or
+		     io.open('/sys/class/power_supply/' .. battery .. '/charge_now')
+	local full = io.open('/sys/class/power_supply/' .. battery .. '/energy_full') or
+		     io.open('/sys/class/power_supply/' .. battery .. '/charge_full')
+	if (now == nil) or (full == nil) then return 0 end
+	return tonumber(now:read())/tonumber(full:read())
 end
 
 local battery_bolt_generate = function (width, height)
