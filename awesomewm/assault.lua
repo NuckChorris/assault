@@ -28,19 +28,25 @@ end
 local acpi_is_on_ac_power = function (adapter)
 	local f = io.open('/sys/class/power_supply/' .. adapter .. '/online')
 	if f == nil then return false end
-	return string.find(f:read(), '1')
+	local o = f:read()
+	f:close()
+	return string.find(o, '1')
 end
 
 local acpi_battery_is_present = function (battery)
 	local f = io.open('/sys/class/power_supply/' .. battery .. '/present')
 	if f == nil then return false end
-	return string.find(f:read(), '1')
+	local o = f:read()
+	f:close()
+	return string.find(o, '1')
 end
 
 local acpi_battery_is_charging = function (battery)
 	local f = io.open('/sys/class/power_supply/' .. battery .. '/status')
 	if f == nil then return false end
-	return string.find(f:read(), 'Charging')
+	local o = f:read()
+	f:close()
+	return string.find(o, 'Charging')
 end
 
 local acpi_battery_percent = function (battery)
@@ -49,7 +55,11 @@ local acpi_battery_percent = function (battery)
 	local full = io.open('/sys/class/power_supply/' .. battery .. '/energy_full') or
 		     io.open('/sys/class/power_supply/' .. battery .. '/charge_full')
 	if (now == nil) or (full == nil) then return 0 end
-	return tonumber(now:read())/tonumber(full:read())
+	local out_n = now:read()
+	now:close()
+	local out_f = full:read()
+	full:close()
+	return tonumber(out_n)/tonumber(out_f)
 end
 
 local battery_bolt_generate = function (width, height)
