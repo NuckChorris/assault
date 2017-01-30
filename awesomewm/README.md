@@ -24,8 +24,23 @@ Installation
 
 4. Add it to a wibox:
 
+for awesome-wm <3.5
+
    ```lua
-   right_layout:add(myassault)
+   right_layout:add(myassault) 
+   ```
+
+for awesome-wm >4.0
+
+   ```lua
+    { -- Right widgets
+        layout = wibox.layout.fixed.horizontal,
+        mykeyboardlayout,
+        wibox.widget.systray(),
+        mytextclock,
+        myassault,
+        s.mylayoutbox,
+    },
    ```
 
 Configuration options
