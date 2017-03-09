@@ -7,6 +7,7 @@ local beautiful = require("beautiful")
 local lgi = require("lgi")
 local cairo = lgi.cairo
 local Pango = lgi.Pango
+local timer = require('gears.timer')
 
 local assault = { mt = {} }
 
@@ -229,6 +230,7 @@ function assault.new (args)
 	local normal_color = args.normal_color or beautiful.fg_normal
 	local critical_color = args.critical_color or "#ff0000"
 	local charging_color = args.charging_color or "#00ff00"
+	local timeout = args.timeout or 30
 
 	args.type = "imagebox"
 
@@ -249,7 +251,8 @@ function assault.new (args)
 		critical_level = critical_level,
 		normal_color = normal_color,
 		critical_color = critical_color,
-		charging_color = charging_color
+		charging_color = charging_color,
+		timeout = timeout,
 	}
 
 	-- Set methods
@@ -259,6 +262,15 @@ function assault.new (args)
 
 	widget.draw = assault.draw
 	widget.fit = assault.fit
+
+	-- Create timer for redrawing
+	local t = timer({timeout = timeout})
+	t:connect_signal("timeout", function()
+		t:stop()
+		widget:emit_signal("widget::redraw_needed")
+		t:again()
+	end)
+	t:start()
 
 	return widget
 end
